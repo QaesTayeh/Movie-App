@@ -33,6 +33,7 @@ flutter:
   assets:
     - assets/
     - assets/lottie/
+    - assets/screenshots/
 
   fonts:
     - family: YsabeauInfant
