@@ -3,7 +3,7 @@
 ## 📸 Screenshots
 | Discover Screen | Favorites Screen | TopRated Screen |
 |-------------|----------------|
-| ![Discover](screenshots/discover.png) | ![TopRated](screenshots/top_rated.png) |
+| ![Discover](assets/screenshots/discover.png) | ![Favorites](assets/screenshots/favorites.png) | ![TopRated](assets/screenshots/top_rated.png) |
 
 ---
 
