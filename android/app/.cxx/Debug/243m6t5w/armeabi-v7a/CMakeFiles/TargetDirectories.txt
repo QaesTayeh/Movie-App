@@ -1,0 +1,2 @@
+/Users/qaistayeh/moviedemo/Movie-App/android/app/.cxx/Debug/243m6t5w/armeabi-v7a/CMakeFiles/edit_cache.dir
+/Users/qaistayeh/moviedemo/Movie-App/android/app/.cxx/Debug/243m6t5w/armeabi-v7a/CMakeFiles/rebuild_cache.dir

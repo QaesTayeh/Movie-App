@@ -1,0 +1,1 @@
+ /Users/qaistayeh/moviedemo/Movie-App/.dart_tool/flutter_build/c11ebe998804b1b1a0ef24a056a2706d/native_assets.json: 

@@ -1,0 +1,1 @@
+/Users/qaistayeh/moviedemo/Movie-App/build/app/intermediates/cxx/Debug/243m6t5w/obj/x86_64
