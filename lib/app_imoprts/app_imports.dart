@@ -1,0 +1,34 @@
+import 'dart:async';
+import 'dart:ui' as ui;
+import 'package:dashed_circular_progress_bar/dashed_circular_progress_bar.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'dart:convert';
+import 'package:http/http.dart';
+// ignore: depend_on_referenced_packages
+import 'package:lottie/lottie.dart';
+import 'package:movie_app/main.dart';
+import 'package:movie_app/model/media_model.dart';
+import 'package:movie_app/model/movie_model.dart';
+import 'package:movie_app/module/bloc/movie_bloc.dart';
+import 'package:movie_app/utils/constant/app_strings.dart';
+import 'package:movie_app/utils/constant/enum.dart';
+//!-----------------------------------------------------------------------------
+part '../module/screens/dashboard_screen.dart';
+part '../material_app.dart';
+part '../utils/theme/custom_theme.dart';
+part '../widgets/custom_text_view.dart';
+part '../widgets/custom_button.dart';
+part '../utils/theme/app_colors.dart';
+part '../widgets/loader.dart';
+part '../module/screens/discover_screen.dart';
+part '../module/data/repository.dart';
+part '../module/data/api.dart';
+part '../module/screens/favorite_screen.dart';
+part '../module/screens/top_rated_screen.dart';
+part '../module/screens/widget/custom_card_widget.dart';
+part '../routes/app_router.dart';
+part '../widgets/empty_widget.dart';
+part '../module/screens/splash.dart';

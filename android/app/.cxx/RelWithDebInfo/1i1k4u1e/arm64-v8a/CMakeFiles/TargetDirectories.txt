@@ -1,0 +1,2 @@
+/Users/qaistayeh/moviedemo/movie/android/app/.cxx/RelWithDebInfo/1i1k4u1e/arm64-v8a/CMakeFiles/edit_cache.dir
+/Users/qaistayeh/moviedemo/movie/android/app/.cxx/RelWithDebInfo/1i1k4u1e/arm64-v8a/CMakeFiles/rebuild_cache.dir

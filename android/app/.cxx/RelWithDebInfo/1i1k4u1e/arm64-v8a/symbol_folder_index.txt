@@ -1,0 +1,1 @@
+/Users/qaistayeh/moviedemo/movie/build/app/intermediates/cxx/RelWithDebInfo/1i1k4u1e/obj/arm64-v8a
