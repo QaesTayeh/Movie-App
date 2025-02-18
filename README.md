@@ -8,7 +8,7 @@
 ---
 
 ## 📦 Packages Used
-- [`font_awesome_flutter`](https://pub.dev/packages/font_awesome_flutter) - For beautiful icons.
+- [`font_awesome_flutter`](https://pub.dev/packages/font_awesome_flutter) - For access to more icons.
 - [`flutter_bloc`](https://pub.dev/packages/flutter_bloc) - State management using BLoC pattern.
 - [`http`](https://pub.dev/packages/http) - For making network requests.
 - [`dashed_circular_progress_bar`](https://pub.dev/packages/dashed_circular_progress_bar) - For progress indicators.
