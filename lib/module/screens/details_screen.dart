@@ -6,6 +6,7 @@ class DetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     MovieBloc movieBloc = context.read<MovieBloc>();
+    final ValueNotifier<double> ratingvalueNotifier = ValueNotifier(0);
 
     return BlocProvider.value(
       value: movieBloc..add(LoadMovieDetailsEvent(movieID: movieId)),
@@ -78,162 +79,196 @@ class DetailsScreen extends StatelessWidget {
                                     MediaQuery.sizeOf(context).height *
                                     (65 / 100),
                                 width: double.infinity,
-                                child: Column(
-                                  children: [
-                                    const SizedBox(height: 20),
-                                    Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                        horizontal: 15,
-                                      ),
-                                      child: Center(
-                                        child: TextViewCustom(
-                                          maxLine: 3,
-                                          color: AppColors.primary,
-                                          fontWeight: FontWeight.w600,
-                                          size: 18,
-                                          text:
-                                              movieBloc.movieDetails?.title ??
-                                              '',
+                                child: SingleChildScrollView(
+                                  child: Column(
+                                    children: [
+                                      const SizedBox(height: 20),
+                                      Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                          horizontal: 15,
+                                        ),
+                                        child: Center(
+                                          child: TextViewCustom(
+                                            maxLine: 3,
+                                            color: AppColors.primary,
+                                            fontWeight: FontWeight.w600,
+                                            size: 18,
+                                            text:
+                                                movieBloc.movieDetails?.title ??
+                                                '',
+                                          ),
                                         ),
                                       ),
-                                    ),
-                                    //*--------------------------------------< Description >-----------------------------------
-                                    //   const Gap(30),
-                                    //   Row(
-                                    //     crossAxisAlignment: CrossAxisAlignment.start,
-                                    //     children: [
-                                    //       const Gap(10),
-                                    //       const Icon(
-                                    //         FontAwesomeIcons.message,
-                                    //         size: 22,
-                                    //       ),
-                                    //       const Gap(15),
-                                    //       Container(
-                                    //         constraints: BoxConstraints(
-                                    //           maxWidth:
-                                    //               MediaQuery.sizeOf(context).width *
-                                    //               (80 / 100),
-                                    //         ),
-                                    //         child: TextViewCustom(
-                                    //           maxLine: 7,
-                                    //           text:
-                                    //               jobsBloc
-                                    //                   .jobsList[index]
-                                    //                   .description ??
-                                    //               '',
-                                    //         ),
-                                    //       ),
-                                    //     ],
-                                    //   ),
-                                    //   const Gap(10),
-                                    //   //*---------------------------------------< Company >--------------------------------------
-                                    //   Row(
-                                    //     children: [
-                                    //       const Gap(10),
-                                    //       const Icon(
-                                    //         FontAwesomeIcons.building,
-                                    //         size: 22,
-                                    //       ),
-                                    //       const Gap(15),
-                                    //       TextViewCustom(
-                                    //         size: 14,
-                                    //         maxLine: 2,
-                                    //         text:
-                                    //             jobsBloc.jobsList[index].company ?? '',
-                                    //       ),
-                                    //     ],
-                                    //   ),
-                                    //   const Gap(10),
-                                    //   //*---------------------------------------< location >-------------------------------------
-                                    //   Row(
-                                    //     children: [
-                                    //       const Gap(10),
-                                    //       const Icon(
-                                    //         FontAwesomeIcons.locationDot,
-                                    //         size: 22,
-                                    //       ),
-                                    //       const Gap(15),
-                                    //       TextViewCustom(
-                                    //         maxLine: 2,
-                                    //         text:
-                                    //             jobsBloc.jobsList[index].location ?? '',
-                                    //       ),
-                                    //     ],
-                                    //   ),
-                                    //   const Gap(10),
-                                    //   //*----------------------------------------< salary >--------------------------------------
-                                    //   Row(
-                                    //     children: [
-                                    //       const Gap(10),
-                                    //       const Icon(
-                                    //         FontAwesomeIcons.dollarSign,
-                                    //         size: 22,
-                                    //       ),
-                                    //       const Gap(15),
-                                    //       TextViewCustom(
-                                    //         color: AppColors.primary,
-                                    //         size: 14,
-                                    //         maxLine: 2,
-                                    //         text: jobsBloc.jobsList[index].salary ?? '',
-                                    //       ),
-                                    //     ],
-                                    //   ),
-                                    //   const Gap(10),
-                                    //   //*-----------------------------------------< Date >---------------------------------------
-                                    //   Row(
-                                    //     children: [
-                                    //       const Gap(10),
-                                    //       const Icon(
-                                    //         FontAwesomeIcons.calendarDays,
-                                    //         size: 22,
-                                    //       ),
-                                    //       const Gap(15),
-                                    //       TextViewCustom(
-                                    //         maxLine: 2,
-                                    //         text:
-                                    //             jobsBloc.jobsList[index].datePosted ??
-                                    //             '',
-                                    //       ),
-                                    //     ],
-                                    //   ),
-                                    //   const Gap(10),
-                                    //   //*------------------------------------< Long Description >--------------------------------
-                                    //   Row(
-                                    //     crossAxisAlignment: CrossAxisAlignment.start,
-                                    //     children: [
-                                    //       const Gap(10),
-                                    //       const Icon(
-                                    //         FontAwesomeIcons.rectangleList,
-                                    //         size: 22,
-                                    //       ),
-                                    //       const Gap(15),
-                                    //       Container(
-                                    //         constraints: BoxConstraints(
-                                    //           maxWidth:
-                                    //               MediaQuery.sizeOf(context).width *
-                                    //               (80 / 100),
-                                    //         ),
-                                    //         child: TextViewCustom(
-                                    //           maxLine: 7,
-                                    //           text:
-                                    //               jobsBloc
-                                    //                   .jobsList[index]
-                                    //                   .longDescription ??
-                                    //               '',
-                                    //         ),
-                                    //       ),
-                                    //     ],
-                                    //   ),
-                                    //   const Gap(10),
-                                    //   //*--------------------------------------< Apply Button >----------------------------------
-                                    //   const Gap(50),
-                                    //   ButtonCustom(
-                                    //     onPressed: () {},
-                                    //     text: AppStrings.applyButton,
-                                    //     height: 30,
-                                    //     width: 150,
-                                    //   ),
-                                  ],
+                                      SizedBox(height: 20),
+                                      ListTile(
+                                        leading: const Icon(
+                                          FontAwesomeIcons.film,
+                                          size: 22,
+                                        ),
+                                        title: TextViewCustom(
+                                          size: 14,
+                                          maxLine: 3,
+                                          text:
+                                              '${movieBloc.movieDetails?.genres}'
+                                                  .toString()
+                                                  .replaceAll("[", "")
+                                                  .replaceAll("]", ""),
+                                        ),
+                                      ),
+                                      Row(
+                                        children: [
+                                          Expanded(
+                                            child: ListTile(
+                                              leading: const Icon(
+                                                FontAwesomeIcons.users,
+                                                size: 22,
+                                              ),
+                                              title: TextViewCustom(
+                                                size: 14,
+                                                maxLine: 2,
+                                                text:
+                                                    '${movieBloc.movieDetails?.popularity}',
+                                              ),
+                                            ),
+                                          ),
+                                          Expanded(
+                                            child: ListTile(
+                                              leading: const Icon(
+                                                FontAwesomeIcons.calendarDays,
+                                                size: 22,
+                                              ),
+                                              title: TextViewCustom(
+                                                size: 14,
+                                                maxLine: 2,
+                                                text:
+                                                    '${movieBloc.movieDetails?.releaseDate}',
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                      ListTile(
+                                        leading: const Icon(
+                                          FontAwesomeIcons.building,
+                                          size: 22,
+                                        ),
+                                        title: TextViewCustom(
+                                          size: 14,
+                                          maxLine: 2,
+                                          text:
+                                              '${movieBloc.movieDetails?.productionCompanies}'
+                                                  .toString()
+                                                  .replaceAll("[", "")
+                                                  .replaceAll("]", ""),
+                                        ),
+                                      ),
+                                      ListTile(
+                                        leading: const Icon(
+                                          FontAwesomeIcons.discourse,
+                                          size: 22,
+                                        ),
+                                        title: TextViewCustom(
+                                          size: 14,
+                                          maxLine: 20,
+                                          text:
+                                              '${movieBloc.movieDetails?.overview}',
+                                        ),
+                                      ),
+                                      ListTile(
+                                        leading: const Icon(
+                                          FontAwesomeIcons.earthAmericas,
+                                          size: 22,
+                                        ),
+                                        title: TextViewCustom(
+                                          size: 14,
+                                          maxLine: 20,
+                                          text:
+                                              '${movieBloc.movieDetails?.productionCountries}'
+                                                  .toString()
+                                                  .replaceAll("[", "")
+                                                  .replaceAll("]", ""),
+                                        ),
+                                      ),
+                                      SizedBox(height: 20),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceEvenly,
+                                        children: [
+                                          CircleAvatar(
+                                            backgroundColor: AppColors.primary,
+                                            radius: 50,
+                                            child: CircleAvatar(
+                                              radius: 40,
+                                              backgroundColor: Colors.grey,
+                                              child: Column(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceEvenly,
+                                                children: [
+                                                  Icon(
+                                                    size: 25,
+                                                    FontAwesomeIcons
+                                                        .arrowsDownToPeople,
+                                                    color:
+                                                        AppColors
+                                                            .backgroundColor,
+                                                  ),
+                                                  TextViewCustom(
+                                                    text:
+                                                        movieBloc
+                                                            .movieDetails
+                                                            ?.voteCount
+                                                            .toString(),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          ),
+                                          CircleAvatar(
+                                            backgroundColor: Colors.grey,
+                                            radius: 50,
+                                            child: DashedCircularProgressBar.aspectRatio(
+                                              aspectRatio: 1,
+                                              valueNotifier:
+                                                  ratingvalueNotifier,
+                                              progress:
+                                                  movieBloc
+                                                      .movieDetails
+                                                      ?.voteAverage ??
+                                                  0,
+                                              maxProgress: 10,
+                                              corners: StrokeCap.butt,
+                                              foregroundColor:
+                                                  AppColors.primary,
+                                              foregroundStrokeWidth: 10,
+                                              backgroundStrokeWidth: 10,
+                                              animation: true,
+                                              child: Center(
+                                                child: ValueListenableBuilder(
+                                                  valueListenable:
+                                                      ratingvalueNotifier,
+                                                  builder:
+                                                      (
+                                                        _,
+                                                        double value,
+                                                        __,
+                                                      ) => Text(
+                                                        '${double.parse(value.toStringAsFixed(1))}/10',
+                                                        style: const TextStyle(
+                                                          color: Colors.black,
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                          fontSize: 14,
+                                                        ),
+                                                      ),
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ),
                             ),
