@@ -21,24 +21,4 @@ class DiscoverRepository {
     MovieModel? result = await discoverApi.getMovieDetails(movieId);
     return result;
   }
-
-  // Future<String> getGuestSessionId() async {
-  //   String result = await discoverApi.getGuestSessionId();
-  //   return result;
-  // }
-
-  // Future<bool> rateMedia(
-  //   String mediaType,
-  //   int mediaId,
-  //   double rating,
-  //   String guestSessionId,
-  // ) async {
-  //   bool result = await discoverApi.rateMedia(
-  //     mediaType,
-  //     mediaId,
-  //     rating,
-  //     guestSessionId,
-  //   );
-  //   return result;
-  // }
 }

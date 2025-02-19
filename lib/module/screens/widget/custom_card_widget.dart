@@ -73,7 +73,6 @@ class CustomCardWidget extends StatelessWidget {
                           height: 300,
                           width: double.infinity,
                         ),
-                        // Image.network(imageUrl),
                       ),
 
                       Container(

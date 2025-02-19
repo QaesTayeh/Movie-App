@@ -25,7 +25,6 @@ class MovieBloc extends Bloc<MovieEvent, MovieState> {
   List<MovieModel> tvList = [];
   List<MediaModel> favorites = [];
   MovieModel? movieDetails;
-  // String guestSessionId = '';
 
   final DiscoverRepository discoverRepository = DiscoverRepository();
 
@@ -98,21 +97,6 @@ class MovieBloc extends Bloc<MovieEvent, MovieState> {
       }
       emit(LoadedFavoritesState());
     });
-
-    // on<GetGuestSessionIdEvent>((event, emit) async {
-    //   guestSessionId = await discoverRepository.getGuestSessionId();
-    //   emit(LoadedGuestSessionIdState());
-    // });
-
-    // on<RateMediaEvent>((event, emit) async {
-    //   await discoverRepository.rateMedia(
-    //     event.mediaType,
-    //     event.mediaId,
-    //     event.rating,
-    //     guestSessionId,
-    //   );
-    //   emit(LoadedGuestSessionIdState());
-    // });
 
     on<SaveMovieRatingEvent>((event, emit) async {
       final movie = favoritesBox.get('movie_${event.movieId}');

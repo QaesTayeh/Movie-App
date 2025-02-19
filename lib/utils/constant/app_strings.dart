@@ -7,12 +7,7 @@ class AppStrings {
   static const tvUrl = 'discover/tv';
   static const topRatedUrl = 'movie/top_rated';
   static const movieDetailsUrl = 'movie/';
-
-  
-  // static const guestSessionUrl = 'authentication/guest_session/new';
-
   //!----------------------------------------< Strings >-----------------------------------------------
-
   static const appTitle = 'Movie Demo App';
   static const splashImage = 'assets/movie.webp';
   static const dashboardRoute = 'DashboardScreen';

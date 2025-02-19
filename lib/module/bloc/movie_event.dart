@@ -43,16 +43,3 @@ class LoadMovieDetailsEvent extends MovieEvent {
   final int movieID;
   LoadMovieDetailsEvent({required this.movieID});
 }
-
-// class GetGuestSessionIdEvent extends MovieEvent {}
-
-// class RateMediaEvent extends MovieEvent {
-//   final String mediaType;
-//   final int mediaId;
-//   final double rating;
-//   RateMediaEvent({
-//     required this.mediaType,
-//     required this.mediaId,
-//     required this.rating,
-//   });
-// }

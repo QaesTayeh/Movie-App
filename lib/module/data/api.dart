@@ -77,42 +77,6 @@ class DiscoverApi {
     return [];
   }
 
-  // Future<String> getGuestSessionId() async {
-  //   Response response = await get(
-  //     Uri.parse(
-  //       AppStrings.baseApiUrl + AppStrings.guestSessionUrl + AppStrings.apiKey,
-  //     ),
-  //   );
-  //   if (response.statusCode == STATUSCODE.Success.value) {
-  //     final data = jsonDecode(response.body);
-  //     String guestSessionId = data['guest_session_id'];
-  //     return guestSessionId;
-  //   } else {
-  //     return '';
-  //   }
-  // }
-
-  // Future<bool> rateMedia(
-  //   String mediaType,
-  //   int mediaId,
-  //   double rating,
-  //   String guestSessionId,
-  // ) async {
-  //   Response response = await post(
-  //     Uri.parse(
-  //       '${AppStrings.baseApiUrl}$mediaType/$mediaId/rating${AppStrings.apiKey}&guest_session_id=$guestSessionId',
-  //     ),
-  //     headers: {'Content-Type': 'application/json'},
-  //     body: jsonEncode({'value': rating}),
-  //   );
-
-  //   json.decode(response.body);
-  //   if (response.statusCode == 200) {
-  //     return json.decode(response.body);
-  //   }
-  //   return true;
-  // }
-
   Future<MovieModel?> getMovieDetails(int movieId) async {
     MovieModel? movieDetails;
     Map<String, dynamic> data;
@@ -126,7 +90,6 @@ class DiscoverApi {
       data = json.decode(response.body);
 
       movieDetails = MovieModel.fromJson(data);
-      print(data);
       return movieDetails;
     } else {
       ScaffoldMessenger.of(globalKey.currentContext!).showSnackBar(
