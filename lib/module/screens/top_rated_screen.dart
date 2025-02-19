@@ -11,47 +11,40 @@ class TopRatedScreen extends StatelessWidget {
       builder: (context, state) {
         return state is LoadingTopRatedListState
             ? Loader()
-            : ListView.builder(
+            : GridView.builder(
               shrinkWrap: true,
+              padding: const EdgeInsets.symmetric(horizontal: 5),
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                childAspectRatio: 0.38,
+                crossAxisSpacing: 0,
+                mainAxisSpacing: 0,
+              ),
               itemCount: movieBloc.topRatedList.length,
-              itemBuilder: (BuildContext context, int topRatedListIndex) {
-                return Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
-                  child: CustomCardWidget(
-                    listsType: ListsType.TopRated,
-                    onRatingUpdate: (rating) {
-                      movieBloc.add(
-                        SaveMovieRatingEvent(
-                          listType: ListsType.TopRated,
-                          movieId: movieBloc.topRatedList[topRatedListIndex].id,
+              itemBuilder: (BuildContext context, int index) {
+                final movie = movieBloc.topRatedList[index];
 
-                          rating: rating,
-                        ),
-                      );
-                    },
-
-                    isFromMoviesList: false,
-                    isFromTopRated: true,
-                    id: movieBloc.topRatedList[topRatedListIndex].id,
-                    popularity:
-                        movieBloc.topRatedList[topRatedListIndex].popularity,
-                    cardHeight: 720,
-                    imageUrl:
-                        '${AppStrings.baseImageUrl}${movieBloc.topRatedList[topRatedListIndex].posterPath}',
-                    overview:
-                        movieBloc.topRatedList[topRatedListIndex].overview ??
-                        '',
-                    releaseDate:
-                        movieBloc.topRatedList[topRatedListIndex].releaseDate ??
-                        '',
-                    title:
-                        movieBloc.topRatedList[topRatedListIndex].title ?? '',
-                    voteAverage:
-                        movieBloc.topRatedList[topRatedListIndex].voteAverage,
-                    voteCount:
-                        movieBloc.topRatedList[topRatedListIndex].voteCount
-                            .toString(),
-                  ),
+                return CustomCardWidget(
+                  listsType: ListsType.TopRated,
+                  onRatingUpdate: (rating) {
+                    movieBloc.add(
+                      SaveMovieRatingEvent(
+                        listType: ListsType.TopRated,
+                        movieId: movie.id,
+                        rating: rating,
+                      ),
+                    );
+                  },
+                  isFromMoviesList: false,
+                  isFromTopRated: true,
+                  id: movie.id,
+                  popularity: movie.popularity,
+                  imageUrl: '${AppStrings.baseImageUrl}${movie.posterPath}',
+                  overview: movie.overview ?? '',
+                  releaseDate: movie.releaseDate ?? '',
+                  title: movie.title ?? '',
+                  voteAverage: movie.voteAverage,
+                  voteCount: movie.voteCount.toString(),
                 );
               },
             );

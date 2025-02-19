@@ -77,18 +77,23 @@ class CustomCardWidget extends StatelessWidget {
                       ),
 
                       Container(
+                        width: double.infinity,
                         color: Colors.grey.withValues(alpha: .7),
 
-                        child: RatingBar.builder(
-                          initialRating: 0,
-                          minRating: 0,
-                          direction: Axis.horizontal,
-                          allowHalfRating: true,
-                          itemCount: 5,
-                          itemBuilder:
-                              (context, _) =>
-                                  Icon(Icons.star, color: Colors.amber),
-                          onRatingUpdate: onRatingUpdate,
+                        child: Center(
+                          child: RatingBar.builder(
+                            itemPadding: EdgeInsets.only(left: 5, right: 5),
+                            itemSize: 30,
+                            initialRating: 0,
+                            minRating: 0,
+                            direction: Axis.horizontal,
+                            allowHalfRating: true,
+                            itemCount: 5,
+                            itemBuilder:
+                                (context, _) =>
+                                    Icon(Icons.star, color: Colors.amber),
+                            onRatingUpdate: onRatingUpdate,
+                          ),
                         ),
                       ),
                     ],
@@ -97,6 +102,7 @@ class CustomCardWidget extends StatelessWidget {
                 SizedBox(height: 10),
                 //!-----------------------------------------------< Movie Title >------------------------------------------------
                 TextViewCustom(
+                  textAlign: TextAlign.center,
                   maxLine: 2,
                   text: title,
                   size: 14,
@@ -189,6 +195,7 @@ class CustomCardWidget extends StatelessWidget {
                             );
                           },
                           child: CircleAvatar(
+                            backgroundColor: Colors.grey,
                             child: Icon(
                               FontAwesomeIcons.heart,
                               color: AppColors.primary,
