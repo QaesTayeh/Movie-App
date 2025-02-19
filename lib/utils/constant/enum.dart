@@ -25,3 +25,15 @@ enum PAGES {
   final int value;
   final String uiName;
 }
+
+enum ListsType {
+  // ignore: constant_identifier_names
+  Movie(0),
+  // ignore: constant_identifier_names
+  TV(1),
+  // ignore: constant_identifier_names
+  TopRated(2);
+
+  const ListsType(this.value);
+  final int value;
+}

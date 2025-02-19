@@ -8,8 +8,6 @@ class ChangeBottomNavigationBarValuEvent extends MovieEvent {
   ChangeBottomNavigationBarValuEvent({required this.value});
 }
 
-class LoadFavorites extends MovieEvent {}
-
 class LoadMoviesListEvent extends MovieEvent {}
 
 class LoadTVListEvent extends MovieEvent {}
@@ -29,3 +27,32 @@ class RemoveFromFavoriteEvent extends MovieEvent {
 
   RemoveFromFavoriteEvent(this.movie);
 }
+
+class SaveMovieRatingEvent extends MovieEvent {
+  final int movieId;
+  final double rating;
+  final ListsType listType;
+  SaveMovieRatingEvent({
+    required this.movieId,
+    required this.rating,
+    required this.listType,
+  });
+}
+
+class LoadMovieDetailsEvent extends MovieEvent {
+  final int movieID;
+  LoadMovieDetailsEvent({required this.movieID});
+}
+
+// class GetGuestSessionIdEvent extends MovieEvent {}
+
+// class RateMediaEvent extends MovieEvent {
+//   final String mediaType;
+//   final int mediaId;
+//   final double rating;
+//   RateMediaEvent({
+//     required this.mediaType,
+//     required this.mediaId,
+//     required this.rating,
+//   });
+// }

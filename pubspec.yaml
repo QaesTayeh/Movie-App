@@ -16,13 +16,18 @@ dependencies:
   dashed_circular_progress_bar: ^0.0.6
   hive:
   hive_flutter: 
+  flutter_rating_bar: ^4.0.1
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
   flutter_lints: ^5.0.0
+  path_provider: ^2.0.11
+  hive_generator:
+  build_runner:
   lottie: ^3.1.2 
+  image_network: ^2.6.0
 
 
 flutter:

@@ -7,6 +7,7 @@ import 'package:movie_app/app_imoprts/app_imports.dart';
 import 'package:movie_app/model/media_model.dart';
 import 'package:movie_app/model/movie_model.dart';
 import 'package:movie_app/utils/constant/app_strings.dart';
+import 'package:movie_app/utils/constant/enum.dart';
 
 part 'movie_event.dart';
 part 'movie_state.dart';
@@ -23,12 +24,23 @@ class MovieBloc extends Bloc<MovieEvent, MovieState> {
   List<MovieModel> moviesList = [];
   List<MovieModel> tvList = [];
   List<MediaModel> favorites = [];
+  MovieModel? movieDetails;
+  // String guestSessionId = '';
 
   final DiscoverRepository discoverRepository = DiscoverRepository();
 
   MovieBloc(this.favoritesBox) : super(DashboardInitial()) {
     on<ChangeBottomNavigationBarValuEvent>((event, emit) async {
       currentPageIndex = event.value;
+
+      switch (currentPageIndex) {
+        case 0:
+          add(LoadMoviesListEvent());
+          add(LoadTVListEvent());
+        case 2:
+          add(LoadTopRatedListEvent());
+      }
+
       emit(BottomNavigationBarValuState());
     });
 
@@ -51,7 +63,7 @@ class MovieBloc extends Bloc<MovieEvent, MovieState> {
     });
 
     on<AddToFavoriteEvent>((event, emit) {
-      emit(LoadingFavoritesEvent());
+      emit(LoadingFavoritesState());
       favoritesBox.put('movie_${event.movie.id}', event.movie);
       favorites = List<MediaModel>.from(favoritesBox.values);
       event.isFromMoviesList
@@ -63,11 +75,11 @@ class MovieBloc extends Bloc<MovieEvent, MovieState> {
             topRatedList.where((e) => e.id == event.movie.id).first,
           )
           : tvList.remove(tvList.where((e) => e.id == event.movie.id).first);
-      emit(LoadedFavoritesEvent());
+      emit(LoadedFavoritesState());
     });
 
     on<RemoveFromFavoriteEvent>((event, emit) {
-      emit(LoadingFavoritesEvent());
+      emit(LoadingFavoritesState());
       favoritesBox.delete('movie_${event.movie.id}');
       favorites = List<MediaModel>.from(favoritesBox.values);
       switch (event.movie.source) {
@@ -84,7 +96,44 @@ class MovieBloc extends Bloc<MovieEvent, MovieState> {
           add(LoadTVListEvent());
           break;
       }
-      emit(LoadedFavoritesEvent());
+      emit(LoadedFavoritesState());
+    });
+
+    // on<GetGuestSessionIdEvent>((event, emit) async {
+    //   guestSessionId = await discoverRepository.getGuestSessionId();
+    //   emit(LoadedGuestSessionIdState());
+    // });
+
+    // on<RateMediaEvent>((event, emit) async {
+    //   await discoverRepository.rateMedia(
+    //     event.mediaType,
+    //     event.mediaId,
+    //     event.rating,
+    //     guestSessionId,
+    //   );
+    //   emit(LoadedGuestSessionIdState());
+    // });
+
+    on<SaveMovieRatingEvent>((event, emit) async {
+      final movie = favoritesBox.get('movie_${event.movieId}');
+      if (movie != null) {
+        movie.rating = event.rating;
+        favoritesBox.put('movie_${event.movieId}', movie);
+
+        if (event.listType.value == ListsType.Movie.value) {
+          add(LoadMoviesListEvent());
+        } else if (event.listType.value == ListsType.TV.value) {
+          add(LoadTVListEvent());
+        } else {
+          add(LoadTopRatedListEvent());
+        }
+      }
+    });
+
+    on<LoadMovieDetailsEvent>((event, emit) async {
+      emit(LoadingMovieDetailsListState());
+      movieDetails = await discoverRepository.getMovieDetails(event.movieID);
+      emit(LoadedMovieDetailsListState());
     });
   }
 }

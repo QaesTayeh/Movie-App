@@ -31,13 +31,14 @@ class MediaModelAdapter extends TypeAdapter<MediaModel> {
       voteAverage: fields[11] as double,
       voteCount: fields[12] as int,
       source: fields[13] as String,
+      rating: fields[14] as double?,
     );
   }
 
   @override
   void write(BinaryWriter writer, MediaModel obj) {
     writer
-      ..writeByte(14)
+      ..writeByte(15)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
@@ -65,7 +66,9 @@ class MediaModelAdapter extends TypeAdapter<MediaModel> {
       ..writeByte(12)
       ..write(obj.voteCount)
       ..writeByte(13)
-      ..write(obj.source);
+      ..write(obj.source)
+      ..writeByte(14)
+      ..write(obj.rating);
   }
 
   @override

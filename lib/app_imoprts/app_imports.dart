@@ -4,11 +4,14 @@ import 'package:dashed_circular_progress_bar/dashed_circular_progress_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'dart:convert';
 import 'package:http/http.dart';
 // ignore: depend_on_referenced_packages
 import 'package:lottie/lottie.dart';
+import 'package:image_network/image_network.dart';
+
 import 'package:movie_app/main.dart';
 import 'package:movie_app/model/media_model.dart';
 import 'package:movie_app/model/movie_model.dart';
@@ -32,3 +35,4 @@ part '../module/screens/widget/custom_card_widget.dart';
 part '../routes/app_router.dart';
 part '../widgets/empty_widget.dart';
 part '../module/screens/splash.dart';
+part '../module/screens/details_screen.dart';

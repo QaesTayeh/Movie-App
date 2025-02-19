@@ -2,7 +2,6 @@ import 'package:movie_app/model/media_model.dart';
 
 class MovieModel {
   final int id;
-
   final String? backdropPath;
   final String? originalTitle;
   final String? originalName;
@@ -13,9 +12,17 @@ class MovieModel {
   final String? firstAirDate;
   final String? title;
   final String? name;
-
   final double voteAverage;
   final int voteCount;
+  final String? tagline;
+  final String? status;
+  final int? budget;
+  final int? revenue;
+  final int? runtime;
+  final List<String>? genres;
+  final List<String>? productionCompanies;
+  final List<String>? productionCountries;
+  final List<String>? spokenLanguages;
 
   MovieModel({
     required this.id,
@@ -31,6 +38,15 @@ class MovieModel {
     this.name,
     required this.voteAverage,
     required this.voteCount,
+    this.tagline,
+    this.status,
+    this.budget,
+    this.revenue,
+    this.runtime,
+    this.genres,
+    this.productionCompanies,
+    this.productionCountries,
+    this.spokenLanguages,
   });
 
   factory MovieModel.fromMediaModel(MediaModel media) {
@@ -59,6 +75,25 @@ class MovieModel {
       name: json['name'],
       voteAverage: (json['vote_average'] ?? 0).toDouble(),
       voteCount: json['vote_count'] ?? 0,
+      tagline: json['tagline'],
+      status: json['status'],
+      budget: json['budget'],
+      revenue: json['revenue'],
+      runtime: json['runtime'],
+      genres:
+          (json['genres'] as List?)?.map((g) => g['name'] as String).toList(),
+      productionCompanies:
+          (json['production_companies'] as List?)
+              ?.map((p) => p['name'] as String)
+              .toList(),
+      productionCountries:
+          (json['production_countries'] as List?)
+              ?.map((p) => p['name'] as String)
+              .toList(),
+      spokenLanguages:
+          (json['spoken_languages'] as List?)
+              ?.map((s) => s['english_name'] as String)
+              .toList(),
     );
   }
 
@@ -77,6 +112,15 @@ class MovieModel {
       'name': name,
       'vote_average': voteAverage,
       'vote_count': voteCount,
+      'tagline': tagline,
+      'status': status,
+      'budget': budget,
+      'revenue': revenue,
+      'runtime': runtime,
+      'genres': genres,
+      'production_companies': productionCompanies,
+      'production_countries': productionCountries,
+      'spoken_languages': spokenLanguages,
     };
   }
 }

@@ -46,6 +46,9 @@ class MediaModel {
   @HiveField(13)
   final String source;
 
+  @HiveField(14)
+  double? rating;
+
   MediaModel({
     required this.id,
     this.backdropPath,
@@ -61,6 +64,6 @@ class MediaModel {
     required this.voteAverage,
     required this.voteCount,
     required this.source,
+    this.rating,
   });
 }
-
